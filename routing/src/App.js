@@ -1,24 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import "./App.css";
+import AboutPage from "./About";
+import ContactsPage from "./contacts";
+import Team from "./Team";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="nav-link" to="/about">
+                  О себе
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/contacts">
+                  Примеры работ
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/team">
+                Контактная информация
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <Routes>
+        <Route path="/about" element={<AboutPage />}>
+        </Route>
+        <Route path="/contacts"  element={<ContactsPage />}>
+        </Route>
+        <Route path="/team"  element={<Team />}>
+        </Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
